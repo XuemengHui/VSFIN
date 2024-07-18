@@ -1,0 +1,55 @@
+DATALOADER:
+  EP_PER_BATCH: 1
+  MODE: episode
+  NUM_WORKERS: 4
+  N_BATCH: 300
+DATASETS:
+  IMAGE_SIZE: 224
+  NAME: SUN
+  SHOTS: 6
+  WAYS: 6
+DTYPE: float32
+LOG_FILE_NAME: results.log
+MODEL:
+  ATTENTION:
+    CHANNEL: 512
+    MODE: add
+    W2V_PATH: datasets/Attribute/w2v
+    WEIGHT_SHARED: True
+  BACKBONE:
+    PRETRAINED: True
+  DEVICE: cuda
+  LOSS:
+    FUZZY_MEMBER: 0.8
+    LAMBDA1: 1.0
+    LAMBDA2: 1.0
+    LAMBDA3: 0.05
+    LAMBDA4: 0.1
+    MARGIN: 0.2
+    QUANTILE: 0.75
+    TEMP: 0.07
+    VAR: 0.5
+  META_ARCHITECTURE: Model
+  NAME: 
+  SCALE: 25.0
+  WEIGHT: 
+MODEL_FILE_NAME: best_model.pth
+OUTPUT_DIR: checkpoints
+PRETRAINED_MODELS: ./pretrained_models
+SOLVER:
+  BASE_LR: 0.001
+  BIAS_LR_FACTOR: 2
+  CHECKPOINT_PERIOD: 50
+  DATA_AUG: resize_random_crop
+  GAMMA: 0.1
+  MAX_EPOCH: 10
+  MOMENTUM: 0.9
+  RESUME_OPTIM: False
+  RESUME_SCHED: False
+  STEPS: 5
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+TEST:
+  DATA_AUG: resize_crop
+  GAMMA: 1.5
+  IMS_PER_BATCH: 100

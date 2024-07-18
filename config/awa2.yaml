@@ -1,0 +1,40 @@
+DATALOADER:
+  MODE: episode
+  N_BATCH: 300
+DATASETS:
+  IMAGE_SIZE: 224
+  NAME: AwA2
+  SHOTS: 4
+  WAYS: 8
+LOG_FILE_NAME: results.log
+MODEL:
+  ATTENTION:
+    CHANNEL: 512
+    W2V_PATH: datasets/Attribute/w2v
+    WEIGHT_SHARED: true
+  BACKBONE:
+    PRETRAINED: true
+  LOSS:
+    FUZZY_MEMBER: 0.2
+    LAMBDA1: 1.0
+    LAMBDA2: 0.1
+    LAMBDA3: 0.05
+    MARGIN: 0.2
+    QUANTILE: 0.4
+    VAR: 0.5
+  META_ARCHITECTURE: Model
+  SCALE: 25.0
+MODEL_FILE_NAME: best_model.pth
+OUTPUT_DIR: checkpoints
+SOLVER:
+  BASE_LR: 1e-3
+  DATA_AUG: resize_random_crop
+  GAMMA: 0.1
+  MAX_EPOCH: 2
+  MOMENTUM: 0.9
+  STEPS: 5
+  WEIGHT_DECAY: 1e-4
+TEST:
+  DATA_AUG: resize_crop
+  GAMMA: 3.0
+  IMS_PER_BATCH: 20
